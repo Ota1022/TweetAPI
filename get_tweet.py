@@ -8,7 +8,7 @@ import time
 
 
 def auth():
-    return os.getenv("BEARER_TOKEN")
+    return "YOUR_KEY"
 
 
 def create_headers(bearer_token):
@@ -43,8 +43,9 @@ bearer_token = auth()
 headers = create_headers(bearer_token)
 # keyword = "#~ -is:retweet"
 keyword = "#~"
-start_date = "2021-00-00T00:00:00.000Z"
-end_date = "2021-00-00T00:00:00.000Z"
+# 日本時間から-9h
+start_date = "2021-00-00T11:00:00.000Z"
+end_date = "2021-00-00T11:00:00.000Z"
 max_results = 200
 total_tweets = 0
 JST = datetime.timezone(datetime.timedelta(hours=+9), "JST")
@@ -115,6 +116,6 @@ while flag:
 
         flag = False
         next_token = None
-    time.sleep(5)
+    time.sleep(10)
 
 print("Total number of results: ", total_tweets)
