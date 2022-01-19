@@ -1,10 +1,10 @@
-import os
-
 import csv
 import datetime
+import os
+import time
+
 import dateutil.parser
 import requests
-import time
 
 
 def auth():
@@ -93,9 +93,7 @@ while flag:
         next_token = json_response["meta"]["next_token"]
         print("Next Token: ", next_token)
         if result_count is not None and result_count > 0 and next_token is not None:
-            append_to_csv(
-                json_response, "tweet" + str(dt_now.strftime("%y%m%d_%H%M%S")) + ".csv"
-            )
+            append_to_csv(json_response, "tweet" + str(dt_now.strftime("%y%m%d_%H%M%S")) + ".csv")
             count += result_count
             total_tweets += result_count
             print("Total # of Tweets added: ", total_tweets)
@@ -105,9 +103,7 @@ while flag:
     else:
         if result_count is not None and result_count > 0:
             print("-------------------")
-            append_to_csv(
-                json_response, "tweet" + str(dt_now.strftime("%y%m%d_%H%M%S")) + ".csv"
-            )
+            append_to_csv(json_response, "tweet" + str(dt_now.strftime("%y%m%d_%H%M%S")) + ".csv")
             count += result_count
             total_tweets += result_count
             print("Total # of Tweets added: ", total_tweets)
